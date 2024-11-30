@@ -6,7 +6,7 @@ using Google.FlatBuffers;
 using UnityEditor;
 using System.IO;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public static class SettingsFileUtils
     {

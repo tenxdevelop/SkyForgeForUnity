@@ -4,7 +4,7 @@
 
 using System.Threading.Tasks;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public interface IImporter<TMainSettings, TSettings> where TMainSettings : struct
     {

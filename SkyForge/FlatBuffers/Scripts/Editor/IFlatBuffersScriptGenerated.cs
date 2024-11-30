@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public interface IFlatBuffersScriptGenerated
     {

@@ -1,6 +1,6 @@
 using Google.FlatBuffers;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public interface IFlatBufferPacker<TMainSettings, TSettings> where TMainSettings : struct
     {

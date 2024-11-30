@@ -2,7 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public interface IImportConstants
     {

@@ -9,7 +9,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public static class SettingsImportUtils 
     {

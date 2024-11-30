@@ -8,7 +8,7 @@ using UnityEditor;
 using System.IO;
 using System;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public static class FlatCompiler
     {

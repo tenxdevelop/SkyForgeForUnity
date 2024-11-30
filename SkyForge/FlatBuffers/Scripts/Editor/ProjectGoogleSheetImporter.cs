@@ -6,7 +6,7 @@ using SkyForge.Extention.GoogleImporter;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace SkyForge.Infrastructure.FlatBuffers
+namespace SkyForge.FlatBuffers
 {
     public abstract class ProjectGoogleSheetImporter<TMainSettings, TSettings> : GoogleSheetsImporter where TMainSettings : struct
     {
