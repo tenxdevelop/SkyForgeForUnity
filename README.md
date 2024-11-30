@@ -1,9 +1,9 @@
 # SkyForgeForUnity it's Architecture template for Unity.
 
 ## Table of content:
-    - [Short description](#description)
-    - [Installation](#installation)
-    - [Get started](#get-started)
+- [Short description](#description)
+- [Installation](#installation)
+- [Get started](#get-started)
 
 ## Description
 
