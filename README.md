@@ -15,6 +15,8 @@ and Google.FlatBuffers for working with configs from google sheets.
 
 To install these dependencies, you need to install nuget for Unity
 
+just use unity Package Manager, at the left top corner click "+" and choose "Add package from git URL..."
+
 ![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/packageManager.png)
 
 Then paste the link below in the field and just press Enter.
@@ -28,6 +30,8 @@ After installing nuget, the nuget tab will appear on the top panel in Unity Edit
 ![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/dependency.png)
 
 And the last step is just to install the SkyForge package, in the same way as nuget
+
+just use unity Package Manager, at the left top corner click "+" and choose "Add package from git URL..."
 
 ![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/packageManager.png)
 
