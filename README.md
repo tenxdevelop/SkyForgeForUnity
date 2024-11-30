@@ -22,7 +22,8 @@ just use unity Package Manager, at the left top corner click "+" and choose "Add
 Then paste the link below in the field and just press Enter.
 
 ```
-https://github.com/GlitchEnzo/NuGetForUnity.git
+https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity
+
 ```
 
 After installing nuget, the nuget tab will appear on the top panel in Unity Editor. Install the necessary dependencies
