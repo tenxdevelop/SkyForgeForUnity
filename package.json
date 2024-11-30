@@ -1,0 +1,15 @@
+{
+  "name": "com.tenxdeveloper.skyforge",
+  "version": "1.0.2",
+  "displayName": "SkyForge Architecture",
+  "description": "SkyForge is an architecture template with MVVM, DI, Proxy pattern with commandHandler and Flatbuffer google importer for making games in Unity.",
+  "unity": "2022.3",
+  "dependencies": {
+   "com.glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity"
+ },
+  "author": {
+    "name": "Tenxdeveloper",
+    "email": "tenxdeveloper@bk.ru",
+    "url": "https://t.me/tenxdevelop"
+  }
+}
