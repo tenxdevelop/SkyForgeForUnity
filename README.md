@@ -1,7 +1,11 @@
 # SkyForgeForUnity it's Architecture template for Unity.
 
+## Table of content:
+    - [Short description](#description)
+    - [Installation](#installation)
+    - [Get started](#get-started)
 
-## Short description
+## Description
 
 This architectural template is based on the MVVM pattern. A basic DI container is implemented here, as well as a command Handler 
 pattern with a Proxy, to maintain the current state of the game through reactive properties. Flatbuffer is used to quickly download 
