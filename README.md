@@ -10,8 +10,34 @@ future I will add a convenient ScriptableObject download. It is also planned to 
 
 ## Installation
 
-For installation, just use unit Package Manager, at the left top corner click "+" and choose "Add package from git URL..."
+In order to install the SkyForge architecture, you must first install dependency Google.Apps, Google.Sheets 
+and Google.FlatBuffers for working with configs from google sheets. 
 
+To install these dependencies, you need to install nuget for Unity
+
+![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/packageManager.png)
+
+Then paste the link below in the field and just press Enter.
+
+```
+https://github.com/GlitchEnzo/NuGetForUnity.git
+```
+
+After installing nuget, the nuget tab will appear on the top panel in Unity Editor. Install the necessary dependencies
+
+![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/dependency.png)
+
+And the last step is just to install the SkyForge package, in the same way as nuget
+
+![image](https://github.com/tenxdevelop/SkyForgeForUnity/blob/main/Assets/Images/packageManager.png)
+
+Then paste the link below in the field and just press Enter.
+
+```
+https://github.com/tenxdevelop/SkyForgeForUnity.git
+```
+
+After that, SkyForge is ready to work
 
 ## Get started
 
