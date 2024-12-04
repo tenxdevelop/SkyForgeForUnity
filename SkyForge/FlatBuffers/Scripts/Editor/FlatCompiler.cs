@@ -12,7 +12,7 @@ namespace SkyForge.FlatBuffers
 {
     public static class FlatCompiler
     {
-        private const string FLATC_PATH = "Assets/SkyForge/FlatBuffers/flatc";
+        private const string FLATC_PATH = "Library/PackageCache/com.tenxdeveloper.skyforge/SkyForge/FlatBuffers/flatc";
 
         public static void Compile(string schemePath, string outputDirectory)
         {

@@ -21,8 +21,7 @@ namespace SkyForge.FlatBuffers
             {
                 Debug.Log("Error can't set FlatBuffers Script Generated");
                 return;
-            }
-
+            }           
             FlatCompiler.Compile(m_flatBuffersScriptGenerated.GetSchemaPaths(), m_flatBuffersScriptGenerated.GetOutputDirectory());
         }
 
