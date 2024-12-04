@@ -4,7 +4,6 @@
 
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using System.Reflection;
 using System.Linq;
 using UnityEditor;
@@ -134,7 +133,7 @@ namespace SkyForge.MVVM.Editors
         {
             var viewModelPropertyInParent = GetViewModelType(m_parentView.ViewModelTypeFullName).GetProperties()
                                                          .Where(property => typeof(IViewModel).IsAssignableFrom(property.PropertyType))
-                                                         .Where(property => property.GetAttribute(typeof(SubViewModelAttribute)) != null);
+                                                         .Where(property => property.GetCustomAttribute(typeof(SubViewModelAttribute)) != null);
             m_viewModelNames.Clear();
             m_viewModelNames[MVVMConstant.NONE] = null;
             foreach (var viewModelProperty in viewModelPropertyInParent)
@@ -265,7 +264,7 @@ namespace SkyForge.MVVM.Editors
             {
                 var parentViewModelType = GetViewModelType(parentViewModelTypeFullName);
                 var property = parentViewModelType.GetProperty(propertyName);
-                var attribute = property.GetAttribute(typeof(SubViewModelAttribute)) as SubViewModelAttribute;
+                var attribute = property.GetCustomAttribute(typeof(SubViewModelAttribute)) as SubViewModelAttribute;
                 return attribute.AcctualType;
             }
 
@@ -275,7 +274,7 @@ namespace SkyForge.MVVM.Editors
         private void DrawSerializeFieldView()
         {
             var serializeFields = m_view.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-                                                  .Where(field => field.GetAttribute(typeof(SerializeField)) != null);
+                                                  .Where(field => field.GetCustomAttribute(typeof(SerializeField)) != null);
 
             foreach (var serializeField in serializeFields)
             {

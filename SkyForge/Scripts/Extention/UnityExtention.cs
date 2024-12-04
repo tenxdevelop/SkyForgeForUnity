@@ -2,7 +2,6 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SkyForge.Extention
@@ -19,7 +18,7 @@ namespace SkyForge.Extention
         {
 
             if (transform.GetComponent<T>() == null)
-                transform.AddComponent<T>();
+                transform.gameObject.AddComponent<T>();
             return transform.GetComponent<T>();
         }
 #endif
