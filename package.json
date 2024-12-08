@@ -1,6 +1,6 @@
 {
   "name": "com.tenxdeveloper.skyforge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "SkyForge Architecture",
   "description": "SkyForge is an architecture template with MVVM, DI, Proxy pattern with commandHandler and Flatbuffer google importer for making games in Unity.",
   "unity": "2022.3",
