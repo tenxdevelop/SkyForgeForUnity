@@ -7,7 +7,7 @@ using System;
 
 namespace SkyForge.Input
 {
-    public abstract class BaseInputMap : IInput
+    public abstract class BaseInputMap : IInputMap
     {
         public TInputMap As<TInputMap>() where TInputMap : BaseInputMap
         {
