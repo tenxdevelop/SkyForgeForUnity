@@ -24,35 +24,49 @@ namespace SkyForge.MVVM
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;
         public bool IsPaerntView => m_isParentView;
+
+        private IViewModel m_targetViewModel;
         public void Bind(IViewModel viewModel)
         {
-            IViewModel targetViewModel;
 
             if (m_isParentView)
             {
-                targetViewModel = viewModel;
+                m_targetViewModel = viewModel;
             }
             else
             {
                 var property = viewModel.GetType().GetProperty(m_viewModelPropertyName);
-                targetViewModel = property.GetValue(viewModel) as IViewModel;
+                m_targetViewModel = property.GetValue(viewModel) as IViewModel;
             }
 
             foreach (var subView in m_subViews)
             {
-                subView.Bind(targetViewModel);
+                subView.Bind(m_targetViewModel);
             }
 
             foreach (var binder in m_childBinders)
             {
-                binder.Bind(targetViewModel);
+                binder.Bind(m_targetViewModel);
             }
         }
 
         public void Destroy()
-        {
-            
+        {           
             Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+#if UNITY_EDITOR
+            m_targetViewModel?.Update(Time.deltaTime);
+#else
+            m_targetViewModel.Update(Time.deltaTime);
+#endif
+        }
+
+        private void FixedUpdate()
+        {
+            m_targetViewModel.PhysicsUpdate(Time.fixedDeltaTime);
         }
 
 #if UNITY_EDITOR
