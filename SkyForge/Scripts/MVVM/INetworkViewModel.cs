@@ -2,13 +2,13 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using UnityEditor;
 
-namespace SkyForge.MVVM.Editors
+namespace SkyForge.MVVM
 {
-    [CustomEditor(typeof(View), true)]
-    public class ViewEditor : BaseViewEditor<View, IViewModel>
+    public interface INetworkViewModel : IViewModel
     {
-        
+        void OnNetworkSpawn();
+
+        void OnNetworkDespawn();
     }
 }

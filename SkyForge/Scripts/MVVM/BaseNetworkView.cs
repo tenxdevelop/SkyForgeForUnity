@@ -4,39 +4,38 @@
 
 using System.Collections.Generic;
 using SkyForge.MVVM.Binders;
+using Unity.Netcode;
 using System.Linq;
 using UnityEngine;
 
 namespace SkyForge.MVVM
 {
-#if UNITY_EDITOR
-    [ExecuteInEditMode]
-#endif
-    public class View : MonoBehaviour, IView
+    [RequireComponent(typeof(NetworkObject))]
+    public abstract class BaseNetworkView : NetworkBehaviour, IView
     {
         [SerializeField] private string m_viewModelTypeFullName;
         [SerializeField] private string m_viewModelPropertyName;
         [SerializeField] private bool m_isParentView;
 
-        [SerializeField] private List<View> m_subViews = new List<View>();
+        [SerializeField] private List<BaseNetworkView> m_subViews = new List<BaseNetworkView>();
         [SerializeField] private List<Binder> m_childBinders = new List<Binder>();
 
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;
         public bool IsPaerntView => m_isParentView;
 
-        private IViewModel m_targetViewModel;
+        protected INetworkViewModel m_targetViewModel;
+
         public void Bind(IViewModel viewModel)
         {
-
             if (m_isParentView)
             {
-                m_targetViewModel = viewModel;
+                m_targetViewModel = viewModel as INetworkViewModel;
             }
             else
             {
                 var property = viewModel.GetType().GetProperty(m_viewModelPropertyName);
-                m_targetViewModel = property.GetValue(viewModel) as IViewModel;
+                m_targetViewModel = property.GetValue(viewModel) as INetworkViewModel;
             }
 
             foreach (var subView in m_subViews)
@@ -51,23 +50,24 @@ namespace SkyForge.MVVM
         }
 
         public void Destroy()
-        {           
+        {
             Destroy(gameObject);
         }
 
+        protected abstract void OnUpdate();
+
+        protected abstract void OnFixedUpdate();
+
         private void Update()
         {
-#if UNITY_EDITOR
-            m_targetViewModel?.Update(Time.deltaTime);
-#else
-            m_targetViewModel.Update(Time.deltaTime);
-#endif
+            OnUpdate();
         }
 
         private void FixedUpdate()
         {
-            m_targetViewModel.PhysicsUpdate(Time.fixedDeltaTime);
+            OnFixedUpdate();
         }
+
 
 #if UNITY_EDITOR
         private void Start()
@@ -76,23 +76,25 @@ namespace SkyForge.MVVM
 
             if (parentTransform)
             {
-                var parentView = parentTransform.GetComponentInParent<View>();
+                var parentView = parentTransform.GetComponentInParent<BaseNetworkView>();
 
                 if (parentView != null)
                 {
                     parentView.RegisterView(this);
                 }
             }
-            
+
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
+
             var parentTransform = transform.parent;
 
             if (parentTransform)
             {
-                var parentView = parentTransform.GetComponentInParent<View>();
+                var parentView = parentTransform.GetComponentInParent<BaseNetworkView>();
 
                 if (parentView != null)
                 {
@@ -149,10 +151,10 @@ namespace SkyForge.MVVM
             }
 
             m_subViews.Clear();
-            var allFoundSubViews = gameObject.GetComponentsInChildren<View>(true);
+            var allFoundSubViews = gameObject.GetComponentsInChildren<BaseNetworkView>(true);
             foreach (var foundSubView in allFoundSubViews)
             {
-                var parentView = foundSubView.GetComponentsInParent<View>().FirstOrDefault(c => !ReferenceEquals(c, foundSubView));
+                var parentView = foundSubView.GetComponentsInParent<BaseNetworkView>().FirstOrDefault(c => !ReferenceEquals(c, foundSubView));
 
                 if (ReferenceEquals(this, parentView))
                 {
@@ -161,7 +163,7 @@ namespace SkyForge.MVVM
             }
         }
 
-        private void RegisterView(View view)
+        private void RegisterView(BaseNetworkView view)
         {
             if (!m_subViews.Contains(view))
             {
@@ -169,11 +171,10 @@ namespace SkyForge.MVVM
             }
         }
 
-        private void RemoveView(View view)
+        private void RemoveView(BaseNetworkView view)
         {
             m_subViews.Remove(view);
         }
 #endif
     }
 }
-

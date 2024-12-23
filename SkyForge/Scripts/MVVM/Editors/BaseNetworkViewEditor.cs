@@ -6,8 +6,8 @@ using UnityEditor;
 
 namespace SkyForge.MVVM.Editors
 {
-    [CustomEditor(typeof(View), true)]
-    public class ViewEditor : BaseViewEditor<View, IViewModel>
+    [CustomEditor(typeof(BaseNetworkView), true)]
+    public class BaseNetworkViewEditor : BaseViewEditor<BaseNetworkView, INetworkViewModel>
     {
         
     }
