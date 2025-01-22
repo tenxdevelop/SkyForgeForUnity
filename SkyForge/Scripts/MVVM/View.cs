@@ -14,12 +14,12 @@ namespace SkyForge.MVVM
 #endif
     public class View : MonoBehaviour, IView
     {
-        [SerializeField] private string m_viewModelTypeFullName;
-        [SerializeField] private string m_viewModelPropertyName;
-        [SerializeField] private bool m_isParentView;
+        [SerializeField, HideInInspector] private string m_viewModelTypeFullName;
+        [SerializeField, HideInInspector] private string m_viewModelPropertyName;
+        [SerializeField, HideInInspector] private bool m_isParentView;
 
-        [SerializeField] private List<View> m_subViews = new List<View>();
-        [SerializeField] private List<Binder> m_childBinders = new List<Binder>();
+        [SerializeField, HideInInspector] private List<View> m_subViews = new List<View>();
+        [SerializeField, HideInInspector] private List<Binder> m_childBinders = new List<Binder>();
 
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;

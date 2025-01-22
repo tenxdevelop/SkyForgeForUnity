@@ -23,7 +23,7 @@ namespace SkyForge.MVVM.Editors
         {
             var methodNames = new List<string>() { MVVMConstant.NONE };
 
-            return methodNames.Concat(System.Type.GetType(ViewModelTypeFullName.stringValue).GetMethods()
+            return methodNames.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetMethods()
                                      .Where(method => method.GetParameters().Length == 2 && method.ReturnType == typeof(void))
                                      .Where(method => method.GetCustomAttribute(typeof(ReactiveMethodAttribute)) is ReactiveMethodAttribute)
                                      .Where(method => method.GetParameters().First().ParameterType == typeof(object) &&

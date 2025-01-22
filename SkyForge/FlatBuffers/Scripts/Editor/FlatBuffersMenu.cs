@@ -40,7 +40,7 @@ namespace SkyForge.FlatBuffers
             var scriptName = Path.GetFileNameWithoutExtension(scriptPath);
             var FullScriptName = nameSpace + "." + scriptName;
 
-            var assembly = GetPlayerAssembly();
+            var assembly = SkyForgeDefineAssembly.GetPlayerAssembly();
             if (assembly is null)
             {
                 Debug.Log("Error can't find Assembly Player");
@@ -85,18 +85,6 @@ namespace SkyForge.FlatBuffers
                 Debug.LogError($"Error can't read FlatBuffers Script Generated! Error: {ex}");
                 return null;
             }
-        }
-
-        private static Assembly GetPlayerAssembly()
-        {
-            Assembly result = null;
-            var allAsemblies = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var assembly in allAsemblies)
-            {
-                if (assembly.FullName.Contains("Assembly-CSharp"))
-                    result = assembly;
-            }
-            return result;
         }
     }
 }

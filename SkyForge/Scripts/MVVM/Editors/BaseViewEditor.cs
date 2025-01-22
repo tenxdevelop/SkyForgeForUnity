@@ -272,7 +272,8 @@ namespace SkyForge.MVVM.Editors
         private void DrawSerializeFieldView()
         {
             var serializeFields = m_view.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-            .Where(field => field.GetCustomAttribute(typeof(SerializeField)) != null);
+                                                                     .Where(field => field.GetCustomAttribute(typeof(HideInInspector)) == null)
+                                                                     .Where(field => field.GetCustomAttribute(typeof(SerializeField)) != null);
 
             foreach (var serializeField in serializeFields)
             {

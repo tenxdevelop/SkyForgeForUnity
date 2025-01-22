@@ -7,6 +7,7 @@ using SkyForge.MVVM.Binders;
 using System.Reflection;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 
 
 namespace SkyForge.MVVM.Editors
@@ -17,7 +18,8 @@ namespace SkyForge.MVVM.Editors
         protected override IEnumerable<string> GetMethodNames()
         {
             var methodNames = new List<string>() { MVVMConstant.NONE };
-            return methodNames.Concat(System.Type.GetType(ViewModelTypeFullName.stringValue).GetMethods()
+            
+            return methodNames.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetMethods()
                               .Where(method => method.GetParameters().Length == 1 && 
                                      method.GetParameters().First().ParameterType == typeof(object) &&
                                      method.ReturnType == typeof(void))

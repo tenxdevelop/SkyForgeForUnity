@@ -23,7 +23,7 @@ namespace SkyForge.MVVM.Editors
         {
             var properties = new List<string>() { MVVMConstant.NONE };
 
-            return properties.Concat(System.Type.GetType(ViewModelTypeFullName.stringValue).GetProperties()
+            return properties.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetProperties()
                              .Where(property => property.PropertyType.IsGenericType)
                              .Where(property => IsValidProperty(property.PropertyType))
                              .Select(property => property.Name)
