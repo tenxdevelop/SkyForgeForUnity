@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using Google.Apis.Sheets.v4.Data;
 using System.Collections.Generic;
 using Google.Apis.Auth.OAuth2;
@@ -111,3 +113,5 @@ namespace SkyForge.Extention.GoogleImporter
         protected abstract void ParseCell(string header, string cellData);
     }
 }
+
+#endif

@@ -2,7 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using System.Reflection;
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 using System.IO;
@@ -10,6 +11,7 @@ using System;
 
 namespace SkyForge.FlatBuffers
 {
+
     public static class FlatBuffersMenu
     {
         private static IFlatBuffersScriptGenerated m_flatBuffersScriptGenerated;
@@ -88,3 +90,5 @@ namespace SkyForge.FlatBuffers
         }
     }
 }
+
+#endif

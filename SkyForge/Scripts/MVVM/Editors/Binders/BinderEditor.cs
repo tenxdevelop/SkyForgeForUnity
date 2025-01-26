@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 using SkyForge.MVVM.Binders;
@@ -86,6 +88,7 @@ namespace SkyForge.MVVM.Editors
             PropertyName.stringValue = newPropertyName == MVVMConstant.NONE ? null : newPropertyName;
             serializedObject.ApplyModifiedProperties();
         }
-
     }
 }
+
+#endif

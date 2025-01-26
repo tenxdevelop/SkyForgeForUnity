@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 
 namespace SkyForge.MVVM.Editors
@@ -16,3 +18,5 @@ namespace SkyForge.MVVM.Editors
         protected abstract IEnumerable<string> GetMethodNames();
     }
 }
+
+#endif

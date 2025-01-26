@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,3 +84,5 @@ namespace SkyForge.MVVM.Editors
         }
     }
 }
+
+#endif

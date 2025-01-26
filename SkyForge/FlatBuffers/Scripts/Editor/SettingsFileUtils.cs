@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using Google.FlatBuffers;
 using UnityEditor;
 using System.IO;
@@ -44,3 +46,5 @@ namespace SkyForge.FlatBuffers
         }
     }
 }
+
+#endif

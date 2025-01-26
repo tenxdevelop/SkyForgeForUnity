@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 using SkyForge.MVVM.Binders;
 using SkyForge.Reactive;
@@ -10,6 +12,7 @@ using UnityEditor;
 
 namespace SkyForge.MVVM.Editors
 {
+
     [CustomEditor(typeof(ObservableBinder), true)]
     public class ObservableBinderEditor : BinderEditor
     {
@@ -43,3 +46,5 @@ namespace SkyForge.MVVM.Editors
         
     }
 }
+
+#endif

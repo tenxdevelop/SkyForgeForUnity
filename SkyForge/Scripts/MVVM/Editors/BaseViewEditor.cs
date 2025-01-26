@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 using System.Reflection;
@@ -12,6 +14,7 @@ using System;
 
 namespace SkyForge.MVVM.Editors
 {
+
     public abstract class BaseViewEditor<TView, TViewModel> : Editor where TView : MonoBehaviour, IView where TViewModel : IViewModel
     {
         private TView m_view;
@@ -240,7 +243,7 @@ namespace SkyForge.MVVM.Editors
 
         private void DrawPingParentViewButton(GameObject parentViewGo)
         {
-            if (parentViewGo != null && GUILayout.Button(MVVMConstant.PARENT_VIEW))
+            if (parentViewGo is not null && GUILayout.Button(MVVMConstant.PARENT_VIEW))
             {
                 EditorGUIUtility.PingObject(parentViewGo);
             }
@@ -284,3 +287,5 @@ namespace SkyForge.MVVM.Editors
         }
     }
 }
+
+#endif

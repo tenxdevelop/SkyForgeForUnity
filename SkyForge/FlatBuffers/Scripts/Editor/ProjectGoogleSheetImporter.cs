@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using SkyForge.Extention.GoogleImporter;
 using System.Threading.Tasks;
 using System.IO;
@@ -49,3 +51,5 @@ namespace SkyForge.FlatBuffers
 
     }
 }
+
+#endif
