@@ -10,7 +10,7 @@ namespace SkyForge.Extention
 {
     public interface IEntryPoint
     {
-        IEnumerator Intialization(DIContainer parentContainer, SceneEnterParams sceneEnterParams);
+        IEnumerator Initialization(DIContainer parentContainer, SceneEnterParams sceneEnterParams);
         IObservable<SceneExitParams> Run();
     }
 }
