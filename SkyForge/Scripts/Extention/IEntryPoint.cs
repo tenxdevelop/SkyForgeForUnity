@@ -2,11 +2,10 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-
-using SkyForge.Reactive;
 using System.Collections;
+using SkyForge.Reactive;
 
-namespace SkyForge.Extention
+namespace SkyForge.Extension
 {
     public interface IEntryPoint
     {

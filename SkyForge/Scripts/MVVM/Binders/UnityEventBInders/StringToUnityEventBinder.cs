@@ -6,6 +6,6 @@ namespace SkyForge.MVVM.Binders
 {
     public class StringToUnityEventBinder : UnityEventBinder<string>
     {
-
+        
     }
 }

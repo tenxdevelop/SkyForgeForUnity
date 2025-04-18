@@ -8,5 +8,7 @@ namespace SkyForge.Input
     {
         TInputMap As<TInputMap>() where TInputMap : BaseInputMap;
         void Enable();
+        
+        void Disable();
     }
 }

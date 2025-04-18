@@ -2,10 +2,10 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using System;
 using UnityEngine;
+using System;
 
-namespace SkyForge.Extention
+namespace SkyForge.Extension
 {
     public class AudioPlayer : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace SkyForge.Extention
         private void Start()
         {
 #if UNITY_EDITOR
-            m_audioSource = UnityExtention.AddComponentInEditor<AudioSource>(transform);
+            m_audioSource = UnityExtension.AddComponentInEditor<AudioSource>(transform);
 #endif
         }
 

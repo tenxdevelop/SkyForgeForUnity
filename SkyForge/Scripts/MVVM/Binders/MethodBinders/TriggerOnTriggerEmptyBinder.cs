@@ -2,7 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Extention;
+using SkyForge.Extension;
 using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
@@ -14,7 +14,7 @@ namespace SkyForge.MVVM.Binders
 #if UNITY_EDITOR
             if (!UnityEditor.EditorApplication.isPlaying)
             {
-                UnityExtention.AddComponentInEditor<BoxCollider>(transform);
+                UnityExtension.AddComponentInEditor<BoxCollider>(transform);
                 transform.GetComponent<BoxCollider>().isTrigger = true;
             }
 #endif

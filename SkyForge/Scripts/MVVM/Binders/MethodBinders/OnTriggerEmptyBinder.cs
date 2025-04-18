@@ -2,7 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Extention;
+using SkyForge.Extension;
 using UnityEngine;
 using System;
 
@@ -18,7 +18,7 @@ namespace SkyForge.MVVM.Binders
 #if UNITY_EDITOR
             if (!UnityEditor.EditorApplication.isPlaying)
             {
-                UnityExtention.AddComponentInEditor<Rigidbody>(transform);
+                UnityExtension.AddComponentInEditor<Rigidbody>(transform);
                 transform.GetComponent<Rigidbody>().useGravity = false;
             }         
 #endif

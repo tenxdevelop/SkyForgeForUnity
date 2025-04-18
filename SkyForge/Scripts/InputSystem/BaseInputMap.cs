@@ -15,6 +15,8 @@ namespace SkyForge.Input
         }
 
         public abstract void Enable();
+        
+        public abstract void Disable();
     }
 
     public abstract class BaseInputMap<TOriginInputMap> : BaseInputMap where TOriginInputMap : IInputActionCollection2
@@ -29,6 +31,11 @@ namespace SkyForge.Input
         public override void Enable()
         {
             OriginInputMap.Enable();
+        }
+
+        public override void Disable()
+        {
+            OriginInputMap.Disable();
         }
     }
 }

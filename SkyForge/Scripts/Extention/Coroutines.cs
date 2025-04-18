@@ -2,10 +2,10 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using System;
 using UnityEngine;
+using System;
 
-namespace SkyForge.Extention
+namespace SkyForge.Extension
 {
     public class Coroutines : MonoBehaviour, IDisposable
     {

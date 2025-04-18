@@ -14,7 +14,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-namespace SkyForge.Extention.GoogleImporter
+namespace SkyForge.Extension.GoogleImporter
 {
     public abstract class GoogleSheetsImporter
     {

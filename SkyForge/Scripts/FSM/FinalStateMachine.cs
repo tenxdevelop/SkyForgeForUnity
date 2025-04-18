@@ -72,7 +72,7 @@ namespace SkyForge.FSM
             var stateType = state.GetType();
             var nextState = m_states[stateType];
 
-            m_currentState?.State.OnExit();
+            m_currentState?.State?.OnExit();
             nextState.State.OnStart();
 
             m_currentState = nextState;

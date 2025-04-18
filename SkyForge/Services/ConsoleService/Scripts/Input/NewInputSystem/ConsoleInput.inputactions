@@ -1,0 +1,34 @@
+{
+    "name": "ConsoleInput",
+    "maps": [
+        {
+            "name": "ConsoleService",
+            "id": "731c63ec-6dd5-4eca-bfed-e2f0863ab042",
+            "actions": [
+                {
+                    "name": "OpenConsole",
+                    "type": "Button",
+                    "id": "836a7b6f-bcdd-4acd-86d3-55c6a59972c1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2b097df0-1dd2-4a52-92a5-11e9c6544ffe",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenConsole",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

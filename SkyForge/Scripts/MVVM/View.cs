@@ -66,7 +66,7 @@ namespace SkyForge.MVVM
 
         private void FixedUpdate()
         {
-            m_targetViewModel.PhysicsUpdate(Time.fixedDeltaTime);
+            m_targetViewModel?.PhysicsUpdate(Time.fixedDeltaTime);
         }
 
 #if UNITY_EDITOR

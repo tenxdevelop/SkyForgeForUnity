@@ -4,7 +4,7 @@
 
 #if UNITY_EDITOR
 
-using SkyForge.Extention.GoogleImporter;
+using SkyForge.Extension.GoogleImporter;
 using System.Threading.Tasks;
 using System.IO;
 

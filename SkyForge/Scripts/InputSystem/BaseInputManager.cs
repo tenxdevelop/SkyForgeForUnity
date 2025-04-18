@@ -33,14 +33,15 @@ namespace SkyForge.Input
             m_inputs.Add(typeInputCached, input);
         }
 
-        protected TInput GetInput<TInput>() where TInput : class, IInput
+        protected TInput GetInput<TInput>() where TInput : IInput
         {
             var typeInput = typeof(TInput);
             if (m_inputs.TryGetValue(typeInput, out var input))
             {
-                return input as TInput;
+                return (TInput)input;
             }
-            return null;
+            
+            return default(TInput);
         }
     }
 }

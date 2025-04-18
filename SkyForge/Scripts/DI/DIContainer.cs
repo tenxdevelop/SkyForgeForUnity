@@ -75,18 +75,29 @@ namespace SkyForge
 
         private T FindFactory<T>((string, Type) key) where T : IDisposable
         {
-            T result;
-            if (!m_container.ContainsKey(key))
+            try
             {
-                if(m_parentContainer is null)
-                    result = default(T);
-                result = m_parentContainer.FindFactory<T>(key);
+                T result;
+                if (!m_container.ContainsKey(key))
+                {
+                    if (m_parentContainer is null)
+                        result = default(T);
+                    result = m_parentContainer.FindFactory<T>(key);
+                }
+                else
+                {
+                    result = m_container[key].CreateFactory<T>();
+                }
+                
+                return result;
             }
-            else
+            catch (Exception exception)
             {
-                result = m_container[key].CreateFactory<T>();
+                Debug.Log("DI Container can't find type: " + key.Item2);
+                Debug.LogError("error DI container: " + exception);
+                
+                return default(T);
             }
-            return result;
         }
 
         private void Register<T>((string, Type) key, Func<DIContainer, T> factory) where  T : IDisposable

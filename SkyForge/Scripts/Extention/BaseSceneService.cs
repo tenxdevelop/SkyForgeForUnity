@@ -1,10 +1,13 @@
-using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+/**************************************************************************\
+   Copyright SkyForge Corporation. All Rights Reserved.
+\**************************************************************************/
 
-namespace SkyForge.Extention
+using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.Events;
+using System;
+
+namespace SkyForge.Extension
 {
     public abstract class BaseSceneService : IDisposable
     {

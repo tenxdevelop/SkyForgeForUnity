@@ -5,7 +5,7 @@
 using SkyForge.MVVM;
 using UnityEngine;
 
-namespace SkyForge.Extention
+namespace SkyForge.Extension
 {
     public class UISceneAttacher : MonoBehaviour
     {

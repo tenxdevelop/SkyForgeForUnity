@@ -2,7 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-namespace SkyForge.Extention
+namespace SkyForge.Extension
 {
     public abstract class SceneExitParams
     {
