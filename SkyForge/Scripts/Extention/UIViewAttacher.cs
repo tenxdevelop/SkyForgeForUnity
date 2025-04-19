@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SkyForge.Extension
 {
-    public class UISceneAttacher : MonoBehaviour
+    public class UIViewAttacher : MonoBehaviour
     {
         public void AttachSceneUI(View uIview)
         {

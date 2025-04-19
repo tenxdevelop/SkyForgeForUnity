@@ -2,9 +2,11 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using System;
+
 namespace SkyForge.Command
 {
-    public abstract class Service
+    public abstract class Service : IDisposable
     {
         protected ICommandProcessor m_commandProcessor;
 
@@ -13,5 +15,6 @@ namespace SkyForge.Command
             m_commandProcessor = commandProcessor;
         }
 
+        public abstract void Dispose();
     }
 }
