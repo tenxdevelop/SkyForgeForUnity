@@ -2,18 +2,19 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Reactive;
-using SkyForge.MVVM;
+using System;
 
 namespace SkyForge.Services.ConsoleService
 {
-    public interface IConsoleServiceViewModel : IViewModel
+    public interface IConsoleService : IDisposable
     {
-        ReactiveProperty<bool> IsShowConsole { get; }
-        
-        ReactiveProperty<Message> MessageProperty { get; }
-        
+        event Action<Message> SendMessage;
         void ProcessCommand(object sender, string command);
         
+        void LogMessage(string messageText);
+
+        void LogWarning(string warningText);
+        
+        void LogError(string errorText);
     }
 }

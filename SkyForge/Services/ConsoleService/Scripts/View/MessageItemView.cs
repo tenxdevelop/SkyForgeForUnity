@@ -17,7 +17,7 @@ namespace SkyForge.Services.ConsoleService
         
         [SerializeField] private TextMeshProUGUI m_textMeshPro;
         
-        private void Awake()
+        public void Init()
         {
             IsVisible = true;
             m_textMeshPro = GetComponent<TextMeshProUGUI>();
