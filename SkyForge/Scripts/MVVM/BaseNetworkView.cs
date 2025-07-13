@@ -2,8 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using SkyForge.MVVM.NetworkBinders;
 using System.Collections.Generic;
-using SkyForge.MVVM.Binders;
 using Unity.Netcode;
 using System.Linq;
 using UnityEngine;
@@ -17,8 +17,8 @@ namespace SkyForge.MVVM
         [SerializeField] private string m_viewModelPropertyName;
         [SerializeField] private bool m_isParentView;
 
-        [SerializeField] private List<BaseNetworkView> m_subViews = new List<BaseNetworkView>();
-        [SerializeField] private List<Binder> m_childBinders = new List<Binder>();
+        [SerializeField] private List<BaseNetworkView> m_subViews = new ();
+        [SerializeField] private List<NetworkBinder> m_childBinders = new ();
 
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;
@@ -103,17 +103,17 @@ namespace SkyForge.MVVM
             }
         }
 
-        public void RegisterBinder(Binder binder)
+        public void RegisterNetworkBinder(NetworkBinder networkBinder)
         {
-            if (!m_childBinders.Contains(binder))
+            if (!m_childBinders.Contains(networkBinder))
             {
-                m_childBinders.Add(binder);
+                m_childBinders.Add(networkBinder);
             }
         }
 
-        public void RemoveBinder(Binder binder)
+        public void RemoveNetworkBinder(NetworkBinder networkBinder)
         {
-            m_childBinders.Remove(binder);
+            m_childBinders.Remove(networkBinder);
         }
 
         public bool IsValidSetup()
@@ -141,12 +141,12 @@ namespace SkyForge.MVVM
         public void Fix()
         {
             m_childBinders.Clear();
-            var allFoundChildBinders = gameObject.GetComponentsInChildren<Binder>(true);
+            var allFoundChildBinders = gameObject.GetComponentsInChildren<NetworkBinder>(true);
             foreach (var foundChildBinder in allFoundChildBinders)
             {
                 if (foundChildBinder.ViewModelTypeFullName == ViewModelTypeFullName)
                 {
-                    RegisterBinder(foundChildBinder);
+                    RegisterNetworkBinder(foundChildBinder);
                 }
             }
 
