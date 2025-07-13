@@ -30,6 +30,8 @@ namespace SkyForge.Command
                 var result = commandHandler.Handle(command);
                 return result;
             }
+            
+            UnityEngine.Debug.Log($"unknown command of type: {typeCommand.Name}, for command processor");
             return false;
         }
 

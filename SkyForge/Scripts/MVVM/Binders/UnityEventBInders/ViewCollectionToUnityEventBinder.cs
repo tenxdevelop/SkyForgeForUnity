@@ -2,8 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Reactive;
 using UnityEngine.Events;
+using SkyForge.Reactive;
 using UnityEngine;
 
 namespace SkyForge.MVVM.Binders

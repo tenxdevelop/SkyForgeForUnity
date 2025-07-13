@@ -2,6 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using UnityEngine;
 using System;
 
 namespace SkyForge.Infrastructure
@@ -15,7 +16,16 @@ namespace SkyForge.Infrastructure
         }
         public T CreateFactory<T>()  where T : IDisposable
         {
-            return ((DIEntry<T>)this).CreateFactory();
+            try
+            {
+                return ((DIEntry<T>)this).CreateFactory();
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError($"DI container error, when create object of type: {typeof(T).Name}, error: {exception.Message}");
+                throw;
+            }
+            
         }
 
         public void Dispose()
