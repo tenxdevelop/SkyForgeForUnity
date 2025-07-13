@@ -4,7 +4,7 @@
 
 namespace SkyForge.Reactive
 {
-    public interface IObservableCollection<T>
+    public interface IObservableCollection<out T>
     {
         IBinding Subscribe(IObserverCollection<T> observer);
         void Unsubscribe(IObserverCollection<T> observer);

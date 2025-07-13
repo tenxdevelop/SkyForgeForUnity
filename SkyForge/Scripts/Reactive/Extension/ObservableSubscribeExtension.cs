@@ -4,9 +4,9 @@
 
 using System;
 
-namespace SkyForge.Reactive.Extention
+namespace SkyForge.Reactive.Extension
 {
-    public static class ObservableSubscribeExtention
+    public static class ObservableSubscribeExtension
     {
         public static IBinding Subscribe<T>(this IObservable<T> observable, Action action)
         {

@@ -2,7 +2,7 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-namespace SkyForge.Reactive.Extention
+namespace SkyForge.Reactive.Extension
 {
     public static partial class Observable
     {

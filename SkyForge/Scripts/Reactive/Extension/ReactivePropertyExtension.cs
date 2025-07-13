@@ -4,9 +4,9 @@
 
 using UnityEngine;
 
-namespace SkyForge.Reactive.Extention
+namespace SkyForge.Reactive.Extension
 {
-    public static class ReactivePropertyExtention
+    public static class ReactivePropertyExtension
     {
 
         //ReactiveProperty

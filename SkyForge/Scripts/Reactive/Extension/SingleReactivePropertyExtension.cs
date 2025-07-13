@@ -2,9 +2,9 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-namespace SkyForge.Reactive.Extention
+namespace SkyForge.Reactive.Extension
 {
-    public static class SingleReactivePropertyExtention
+    public static class SingleReactivePropertyExtension
     {
         public static void UpdateValue(this SingleReactiveProperty<int> reactiveProperty, object sender, int value)
         {
