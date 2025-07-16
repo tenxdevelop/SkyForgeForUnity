@@ -18,5 +18,7 @@ namespace SkyForge.Services.ConsoleService
             var consoleInput = m_inputMap.As<ConsoleServiceInputMap>();
             return consoleInput.IsOpenOrCloseConsole();
         }
+
+        
     }
 }

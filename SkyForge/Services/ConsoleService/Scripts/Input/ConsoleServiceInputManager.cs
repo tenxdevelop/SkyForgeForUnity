@@ -3,6 +3,7 @@
 \**************************************************************************/
 
 using SkyForge.Input;
+using System.Linq;
 
 namespace SkyForge.Services.ConsoleService
 {
@@ -20,13 +21,7 @@ namespace SkyForge.Services.ConsoleService
 
         public IConsoleInput GetConsoleInput()
         {
-            return GetInput<IConsoleInput>();
-        }
-        
-        
-        public override void Dispose()
-        {
-            m_inputMap.Disable();
+            return GetInputs<IConsoleInput>().First();
         }
     }
 }
