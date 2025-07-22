@@ -34,9 +34,17 @@ namespace SkyForge.MVVM.NetworkBinders
         
         private void Start()
         {
+            
 #if UNITY_EDITOR
             var parentView = GetComponentInParent<BaseNetworkView>();
-            parentView.RegisterNetworkBinder(this);
+            if (parentView is null)
+            {
+                Debug.Log("don't have parent network view");
+            }
+            else
+            {
+                parentView.RegisterNetworkBinder(this);    
+            }
 #endif
             OnStart();
         }

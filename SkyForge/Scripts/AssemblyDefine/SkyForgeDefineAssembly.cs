@@ -3,14 +3,15 @@
 \**************************************************************************/
 
 using System.Reflection;
+using UnityEditor;
+using UnityEngine;
 using System;
 
 namespace SkyForge
 {
     public static class SkyForgeDefineAssembly
     {
-        public const string ASSEMBLY_CONFIG_FILE_NAME = "SkyForgeDefineAssemblyConfig.json";
-        public static string m_assemblyName = "Assembly-CSharp";
+        private static string m_assemblyName;
         
         private static Assembly m_assembly;
 
@@ -18,10 +19,22 @@ namespace SkyForge
         {
             return m_assemblyName;
         }
+
+        public static void SetAssemblyName(string assemblyName)
+        {
+            m_assemblyName = assemblyName;
+        }
         
         public static Assembly GetPlayerAssembly()
         {
-            
+
+#if UNITY_EDITOR
+            if (string.IsNullOrEmpty(m_assemblyName))
+            {
+                SetAssemblyName(SessionState.GetString("AssemblyDefine", "Assembly-CSharp"));
+                Debug.Log(m_assemblyName);
+            }
+#endif
             if (m_assembly is null)
             {
                 var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();

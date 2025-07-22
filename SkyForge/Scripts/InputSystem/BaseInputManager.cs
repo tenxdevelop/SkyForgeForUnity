@@ -12,13 +12,13 @@ namespace SkyForge.Input
     {
         protected IInputMap m_inputMap;
         
-        private Dictionary<Type, IList<IInput>> m_inputs;
+        private Dictionary<Type, object> m_inputs;
         
         public BaseInputManager(IInputMap inputMap)
         {
             m_inputMap = inputMap;
             m_inputMap.Enable();
-            m_inputs = new Dictionary<Type, IList<IInput>>();
+            m_inputs = new Dictionary<Type, object>();
         }
 
         public virtual void Dispose()
@@ -35,17 +35,20 @@ namespace SkyForge.Input
 
             if (m_inputs.ContainsKey(typeInterfaceInput))
             {
-                if (m_inputs[typeInterfaceInput].Any(input => input is TInput))
+                var currentInputs = m_inputs[typeInterfaceInput] as IList<TInputInterface>;
+                
+                if (currentInputs.Any(input => input is TInput))
                     return;
                 
-                var newInput = Activator.CreateInstance(typeInput, new object[] { m_inputMap }) as TInput;
-                m_inputs[typeInterfaceInput].Add(newInput);
+                var newInput = (TInputInterface)Activator.CreateInstance(typeInput, new object[] { m_inputMap });
+                currentInputs.Add(newInput);
                 
                 return;
             }
             
-            var input = Activator.CreateInstance(typeInput, new object[] { m_inputMap }) as TInput;
-            var inputs = new List<IInput>();
+            var input = (TInputInterface)Activator.CreateInstance(typeInput, new object[] { m_inputMap });
+            var inputs = new List<TInputInterface>();
+            
             inputs.Add(input);
             
             m_inputs.Add(typeInterfaceInput, inputs);

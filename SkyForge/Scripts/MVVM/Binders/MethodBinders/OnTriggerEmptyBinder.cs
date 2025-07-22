@@ -15,19 +15,13 @@ namespace SkyForge.MVVM.Binders
 
         private void Awake()
         {
-#if UNITY_EDITOR
-            if (!UnityEditor.EditorApplication.isPlaying)
-            {
-                UnityExtension.AddComponentInEditor<Rigidbody>(transform);
-                transform.GetComponent<Rigidbody>().useGravity = false;
-            }         
-#endif
             OnAwake();
         }
         protected virtual void OnAwake() { }
         protected override void OnBind()
         {
             m_trigerViewType = Type.GetType(m_trigerViewTypeFullName);
+            Debug.Log(m_trigerViewTypeFullName);
         }
     }
 }

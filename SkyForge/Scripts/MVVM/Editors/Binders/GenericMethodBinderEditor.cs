@@ -24,8 +24,9 @@ namespace SkyForge.MVVM.Editors
         protected override IEnumerable<string> GetMethodNames()
         {
             var methodNames = new List<string>() { MVVMConstant.NONE };
-
-            return methodNames.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetMethods()
+            
+            
+            return methodNames.Concat(m_viewModelType.GetMethods()
                                      .Where(method => method.GetParameters().Length == 2 && method.ReturnType == typeof(void))
                                      .Where(method => method.GetCustomAttribute(typeof(ReactiveMethodAttribute)) is ReactiveMethodAttribute)
                                      .Where(method => method.GetParameters().First().ParameterType == typeof(object) &&

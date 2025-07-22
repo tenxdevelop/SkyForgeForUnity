@@ -7,6 +7,8 @@ namespace SkyForge.MVVM
     public static class MVVMConstant
     {
         public const string NONE = "None";
+        public const string ANY = "Any";
+        public const string ANY_VIEW_TYPE = "AnyTriggerView";
         public const string VIEW_MODEL = "ViewModel: ";
         public const string SUB_VIEW_MODEL = "SubViewModel: ";
         public const string PARENT_VIEW = "ParentView";

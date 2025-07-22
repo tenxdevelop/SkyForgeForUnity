@@ -17,7 +17,9 @@ namespace SkyForge.MVVM.Editors
     {
         private SerializedProperty m_trigerViewTypeFullName;
         private TypeCache.TypeCollection m_cachedViewTypes;
+        
         protected Dictionary<string, string> m_viewNames;
+        
         protected override void OnStart()
         {
             base.OnStart();
@@ -55,6 +57,8 @@ namespace SkyForge.MVVM.Editors
                                                      .OrderBy(type => type.Name);
             m_viewNames.Clear();
             m_viewNames[MVVMConstant.NONE] = null;
+            m_viewNames[MVVMConstant.ANY] = MVVMConstant.ANY_VIEW_TYPE;
+            
             foreach (var viewModelType in allViewModelTypes)
             {
                 m_viewNames[viewModelType.Name] = viewModelType.FullName;
@@ -71,7 +75,10 @@ namespace SkyForge.MVVM.Editors
         {
             if (string.IsNullOrEmpty(fullName))
                 return MVVMConstant.NONE;
-
+            
+            if(fullName.Equals(MVVMConstant.ANY_VIEW_TYPE))
+                return MVVMConstant.ANY;
+            
             var type = GetViewModelType(fullName);
             return type?.Name ?? MVVMConstant.NONE;
         }

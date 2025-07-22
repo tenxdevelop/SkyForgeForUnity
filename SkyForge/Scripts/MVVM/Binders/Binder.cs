@@ -35,7 +35,16 @@ namespace SkyForge.MVVM.Binders
         {
 #if UNITY_EDITOR
             var parentView = GetComponentInParent<View>();
-            parentView.RegisterBinder(this);
+            
+            if (parentView is null)
+            {
+                Debug.LogWarning("don't have parent view");
+            }
+            else
+            {
+                parentView.RegisterBinder(this);
+            }
+            
 #endif
             OnStart();
         }

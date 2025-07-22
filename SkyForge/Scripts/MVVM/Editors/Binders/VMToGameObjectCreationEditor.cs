@@ -17,15 +17,14 @@ namespace SkyForge.MVVM.Editors
         protected override IEnumerable<string> GetPropertyNames()
         {
             var properties = new List<string>() { MVVMConstant.NONE };
-
-            return properties.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetProperties()
+            
+            return properties.Concat(m_viewModelType.GetProperties()
                              .Where(property => !property.PropertyType.IsGenericType)
                              .Where(property => typeof(IViewModel).IsAssignableFrom(property.PropertyType))
                              .Select(property => property.Name)
                              .OrderBy(name => name));
         }
-
-
+        
     }
     
 }

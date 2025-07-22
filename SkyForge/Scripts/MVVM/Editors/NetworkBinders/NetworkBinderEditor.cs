@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using System;
 
 namespace SkyForge.MVVM.Editors
 {
@@ -24,7 +25,9 @@ namespace SkyForge.MVVM.Editors
         private BaseNetworkView m_parentView;
         private SerializedProperty m_viewModelTypeFullName;
         private SerializedProperty m_propertyName;
-
+        
+        protected Type m_viewModelType;
+        
         private void OnEnable()
         {
             m_binder = target as NetworkBinder;
@@ -36,7 +39,12 @@ namespace SkyForge.MVVM.Editors
 
         public override void OnInspectorGUI()
         {
-
+            if (m_parentView is null)
+            {
+                Debug.LogWarning("don't have parent network view");
+                return;
+            }
+            
             if (!m_viewModelTypeFullName.stringValue.Equals(m_parentView.ViewModelTypeFullName))
             {
                 m_viewModelTypeFullName.stringValue = m_parentView.ViewModelTypeFullName;
@@ -59,7 +67,19 @@ namespace SkyForge.MVVM.Editors
         
         protected void DrawPropertyName()
         {
-            var options = GetPropertyNames().ToArray();
+            m_viewModelType = SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue);
+
+            string[] options;
+            
+            if (m_viewModelType is null)
+            {
+                Debug.LogWarning($"Cannot find viewModelType: {ViewModelTypeFullName.stringValue} in assembly: {SkyForgeDefineAssembly.GetPlayerAssembly().FullName}");
+                options = new string[] { MVVMConstant.NONE };
+            }
+            else
+            {
+                options = GetPropertyNames().ToArray();
+            }
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(GetLabelField());

@@ -10,7 +10,7 @@ namespace SkyForge.Services.ConsoleService
 {
     public class ConsoleServiceViewModel : IConsoleServiceViewModel
     {
-        public ReactiveProperty<bool> IsShowConsole { get; private set; } = new ();
+        public ReactiveProperty<bool> IsShowConsole { get; private set; } = new();
         
         public ReactiveProperty<Message> MessageProperty { get; private set; } = new();
         
@@ -24,7 +24,7 @@ namespace SkyForge.Services.ConsoleService
             
             IsShowConsole.Value = false;
             MessageProperty.Value = Message.Empty();
-            
+            Debug.Log("test");
             m_consoleService.SendMessage += HandleLog;
             Application.logMessageReceived += HandleLog;
         }

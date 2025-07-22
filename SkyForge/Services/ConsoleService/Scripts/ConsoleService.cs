@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UnityEngine;
 
 namespace SkyForge.Services.ConsoleService
 {
@@ -25,12 +26,20 @@ namespace SkyForge.Services.ConsoleService
             m_commands = new List<IConsoleCommand>();
             
             var assembly = SkyForgeDefineAssembly.GetPlayerAssembly();
-            var classTypes = assembly.GetTypes().Where(type => type.IsClass && !type.IsAbstract && typeof(IConsoleCommand).IsAssignableFrom(type));
             
-            foreach (var classType in classTypes)
+            if (assembly != null)
             {
-                var instanceCommand = Activator.CreateInstance(classType) as IConsoleCommand;
-                m_commands.Add(instanceCommand);
+                var classTypes = assembly.GetTypes().Where(type => type.IsClass && !type.IsAbstract && typeof(IConsoleCommand).IsAssignableFrom(type));
+
+                foreach (var classType in classTypes)
+                {
+                    var instanceCommand = Activator.CreateInstance(classType) as IConsoleCommand;
+                    m_commands.Add(instanceCommand);
+                }
+            }
+            else
+            {
+                Debug.Log("Console service no assembly found");
             }
         }
         

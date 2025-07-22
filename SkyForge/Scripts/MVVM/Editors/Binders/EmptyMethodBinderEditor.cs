@@ -19,7 +19,7 @@ namespace SkyForge.MVVM.Editors
         {
             var methodNames = new List<string>() { MVVMConstant.NONE };
             
-            return methodNames.Concat(SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue).GetMethods()
+            return methodNames.Concat(m_viewModelType.GetMethods()
                               .Where(method => method.GetParameters().Length == 1 && 
                                      method.GetParameters().First().ParameterType == typeof(object) &&
                                      method.ReturnType == typeof(void))
