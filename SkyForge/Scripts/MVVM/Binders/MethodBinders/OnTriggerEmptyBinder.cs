@@ -21,7 +21,6 @@ namespace SkyForge.MVVM.Binders
         protected override void OnBind()
         {
             m_trigerViewType = Type.GetType(m_trigerViewTypeFullName);
-            Debug.Log(m_trigerViewTypeFullName);
         }
     }
 }
