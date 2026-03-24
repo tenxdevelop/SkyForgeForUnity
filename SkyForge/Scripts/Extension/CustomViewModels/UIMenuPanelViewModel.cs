@@ -3,18 +3,13 @@
 \**************************************************************************/
 
 using SkyForge.Reactive;
+using SkyForge.MVVM;
 
 namespace SkyForge.Extension
 {
-    public abstract class UIMenuPanelViewModel : IUIMenuPanelViewModel
+    public abstract class UIMenuPanelViewModel : ViewModel, IUIMenuPanelViewModel
     {
         public ReactiveProperty<bool> IsActive { get; private set; } = new();
-        
-        public abstract void Dispose();
-
-        public abstract void Update(float deltaTime);
-
-        public abstract void PhysicsUpdate(float deltaTime);
         
         public void ShowMenu()
         {

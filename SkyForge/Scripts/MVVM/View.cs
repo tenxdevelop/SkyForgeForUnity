@@ -23,12 +23,13 @@ namespace SkyForge.MVVM
 
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;
-        public bool IsPaerntView => m_isParentView;
+        public bool IsParentView => m_isParentView;
 
+        protected IViewModel ViewModel => m_targetViewModel;
+        
         private IViewModel m_targetViewModel;
         public void Bind(IViewModel viewModel)
         {
-
             if (m_isParentView)
             {
                 m_targetViewModel = viewModel;
@@ -48,10 +49,23 @@ namespace SkyForge.MVVM
             {
                 binder.Bind(m_targetViewModel);
             }
+
+            Init();
         }
 
+        protected virtual void Init()
+        {
+            
+        }
+
+        protected virtual void Dispose()
+        {
+            
+        }
+        
         public void Destroy()
         {           
+            Dispose();
             Destroy(gameObject);
         }
 
