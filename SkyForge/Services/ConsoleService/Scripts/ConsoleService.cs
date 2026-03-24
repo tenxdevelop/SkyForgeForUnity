@@ -15,9 +15,9 @@ namespace SkyForge.Services.ConsoleService
         
         public event Action<Message> SendMessage;
 
-        private List<IConsoleCommand> m_commands;
+        private readonly List<IConsoleCommand> m_commands;
         
-        private DIContainer m_container;
+        private readonly DIContainer m_container;
 
         public ConsoleService(DIContainer container)
         {

@@ -2,13 +2,14 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using System;
+
 namespace SkyForge.Input
 {
-    public interface IInputMap
+    public interface IInputMapper : IDisposable
     {
-        TInputMap As<TInputMap>() where TInputMap : BaseInputMap;
+        TInputMap As<TInputMap>() where TInputMap : BaseInputMapper;
         void Enable();
-        
         void Disable();
     }
 }

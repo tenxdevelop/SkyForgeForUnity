@@ -7,35 +7,36 @@ using System;
 
 namespace SkyForge.Input
 {
-    public abstract class BaseInputMap : IInputMap
+    public abstract class BaseInputMapper : IInputMapper
     {
-        public TInputMap As<TInputMap>() where TInputMap : BaseInputMap
+        public TInputMap As<TInputMap>() where TInputMap : BaseInputMapper
         {
             return this as TInputMap;
         }
-
+        
+        public abstract void Dispose();
         public abstract void Enable();
         
         public abstract void Disable();
     }
 
-    public abstract class BaseInputMap<TOriginInputMap> : BaseInputMap where TOriginInputMap : IInputActionCollection2
+    public abstract class BaseInputMapper<TOriginInput> : BaseInputMapper where TOriginInput : IInputActionCollection2
     {
-        public TOriginInputMap OriginInputMap { get; }
+        protected TOriginInput OriginInput { get; }
 
-        public BaseInputMap()
+        protected BaseInputMapper()
         {
-            OriginInputMap = Activator.CreateInstance<TOriginInputMap>();
+            OriginInput = Activator.CreateInstance<TOriginInput>();
         }
-
+        
         public override void Enable()
         {
-            OriginInputMap.Enable();
+            OriginInput.Enable();
         }
 
         public override void Disable()
         {
-            OriginInputMap.Disable();
+            OriginInput.Disable();
         }
     }
 }

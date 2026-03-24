@@ -3,25 +3,19 @@
 \**************************************************************************/
 
 using SkyForge.Input;
-using System.Linq;
 
 namespace SkyForge.Services.ConsoleService
 {
-    public class ConsoleServiceInputManager : BaseInputManager
+    public class ConsoleServiceInputMapper : BaseInputMapper<ConsoleNewInputSystem>
     {
-        public ConsoleServiceInputManager() : base(new ConsoleServiceInputMap())
+        public override void Dispose()
         {
             
         }
-
-        public override void Init()
+        
+        public bool IsOpenOrCloseConsole()
         {
-            
-        }
-
-        public IConsoleInput GetConsoleInput()
-        {
-            return GetInputs<IConsoleInput>().First();
+            return OriginInput.ConsoleService.OpenConsole.triggered;
         }
     }
 }

@@ -4,13 +4,12 @@
 
 namespace SkyForge.Input
 {
-    public class BaseInput
+    public abstract class BaseInput
     {
-        protected IInputMap m_inputMap;
-
-        public BaseInput(IInputMap inputMap)
+        protected readonly IInputMapper InputMapper;
+        protected BaseInput(IInputMapper inputMapper)
         {
-            m_inputMap = inputMap;
+            InputMapper = inputMapper;
         }
     }
 }

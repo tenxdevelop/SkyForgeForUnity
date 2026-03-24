@@ -8,14 +8,14 @@ namespace SkyForge.Services.ConsoleService
 {
     public class ConsoleServiceInput : BaseInput, IConsoleInput
     {
-        public ConsoleServiceInput(IInputMap inputMap) : base(inputMap)
+        public ConsoleServiceInput(IInputMapper inputMapper) : base(inputMapper)
         {
             
         }
 
         public bool IsOpenOrCloseConsole()
         {
-            var consoleInput = m_inputMap.As<ConsoleServiceInputMap>();
+            var consoleInput = InputMapper.As<ConsoleServiceInputMapper>();
             return consoleInput.IsOpenOrCloseConsole();
         }
 
