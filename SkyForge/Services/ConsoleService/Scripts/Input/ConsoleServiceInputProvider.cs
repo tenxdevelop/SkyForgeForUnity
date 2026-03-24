@@ -9,7 +9,7 @@ namespace SkyForge.Services.ConsoleService
 {
     public class ConsoleServiceInputProvider : BaseInputProvider
     {
-        public ConsoleServiceInputProvider() : base(new ConsoleServiceInputMapper())
+        public ConsoleServiceInputProvider() : base(new ConsoleInputMapper())
         {
             
         }

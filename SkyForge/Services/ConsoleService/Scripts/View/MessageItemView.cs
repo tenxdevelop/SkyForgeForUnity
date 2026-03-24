@@ -14,9 +14,9 @@ namespace SkyForge.Services.ConsoleService
         [SerializeField] private Color m_errorColor = Color.red;
         [SerializeField] private Color m_warningColor = Color.yellow;
         [SerializeField] private Color m_messageColor = Color.white;
+        [SerializeField] private Color m_commandColor = Color.cyan;
         
         [SerializeField] private TextMeshProUGUI m_textMeshPro;
-        
         public void Init()
         {
             IsVisible = true;
@@ -35,6 +35,9 @@ namespace SkyForge.Services.ConsoleService
                     break;
                 case MessageType.Message:
                     m_textMeshPro.color = m_messageColor;
+                    break;
+                case MessageType.Command:
+                    m_textMeshPro.color = m_commandColor;
                     break;
                 default:
                     m_textMeshPro.color = m_messageColor;

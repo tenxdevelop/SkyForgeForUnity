@@ -9,6 +9,7 @@ namespace SkyForge.Services.ConsoleService
         Message,
         Warning,
         Error,
-        Empty
+        Empty,
+        Command
     }
 }

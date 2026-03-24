@@ -25,6 +25,15 @@ namespace SkyForge.Input
         {
             InputMapper.Disable();
             InputMapper.Dispose();
+
+            foreach (var inputs in m_inputs.Values)
+            {
+                if (inputs is IList<IInput> currentInputs)
+                {
+                    foreach (var input in currentInputs)
+                        input.Dispose();
+                }
+            }
         }
         
         public void RegisterInput<TInputInterface, TInput>() where TInput : class, IInput where TInputInterface : IInput

@@ -58,6 +58,7 @@ namespace SkyForge.Services.ConsoleService
                 {
                     if (command.CommandName.Equals(commandName))
                     {
+                        LogCommand(commandName, commandParams);
                         command.Process(m_container, commandParams);
                         return;
                     }
@@ -86,6 +87,17 @@ namespace SkyForge.Services.ConsoleService
         public void LogError(string errorText)
         {
             var message = new Message(errorText, MessageType.Error);
+            SendMessage?.Invoke(message);
+        }
+
+        private void LogCommand(string commandName, string[] commandParams)
+        {
+            var paramsAsMessage = string.Empty;
+            
+            foreach (var param in commandParams)
+                paramsAsMessage += param + " ";
+            
+            var message = new Message("> " + commandName + " " + paramsAsMessage, MessageType.Command);
             SendMessage?.Invoke(message);
         }
         

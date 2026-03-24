@@ -2,20 +2,20 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using SkyForge.Reactive.Extension;
 using SkyForge.Reactive;
 using SkyForge.MVVM;
 using UnityEngine;
 
 namespace SkyForge.Services.ConsoleService
 {
-    public class ConsoleServiceViewModel : IConsoleServiceViewModel
+    public class ConsoleServiceViewModel : ViewModel, IConsoleServiceViewModel
     {
         public ReactiveProperty<bool> IsShowConsole { get; private set; } = new();
-        
         public ReactiveProperty<Message> MessageProperty { get; private set; } = new();
         
-        private IConsoleService m_consoleService;
-        private IConsoleInput m_inputConsole;
+        private readonly IConsoleService m_consoleService;
+        private readonly IConsoleInput m_inputConsole;
 
         public ConsoleServiceViewModel(IConsoleService consoleService, IConsoleInput inputConsole)
         {
@@ -24,39 +24,36 @@ namespace SkyForge.Services.ConsoleService
             
             IsShowConsole.Value = false;
             MessageProperty.Value = Message.Empty();
-            Debug.Log("test");
+            
             m_consoleService.SendMessage += HandleLog;
             Application.logMessageReceived += HandleLog;
-        }
-
-        public void Dispose()
-        {
             
-        }
+            Debug.Log("test console service");
 
-        public void Update(float deltaTime)
-        {
-            if(m_inputConsole.IsOpenOrCloseConsole())
-                IsShowConsole.Value = !IsShowConsole.Value;
-        }
-
-        public void PhysicsUpdate(float deltaTime)
-        {
-            
+            m_inputConsole.IsOpenOrCloseConsoleEvent += OnChangeShowConsoleCommand;
         }
         
         [ReactiveMethod]
         public void ProcessCommand(object sender, string commandMessage)
         {
             m_consoleService.ProcessCommand(sender, commandMessage);
-            
+        }
+
+        public override void Dispose()
+        {
+            m_inputConsole.IsOpenOrCloseConsoleEvent -= OnChangeShowConsoleCommand;
+        }
+        
+        private void OnChangeShowConsoleCommand()
+        {
+            IsShowConsole.Opposed();
         }
         
         private void HandleLog(Message message)
         {
             MessageProperty.Value = message;
         }
-
+        
         private void HandleLog(string message, string stackTrace, LogType logType)
         {
             switch (logType)
