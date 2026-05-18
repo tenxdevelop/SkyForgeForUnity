@@ -6,6 +6,7 @@ using SkyForge.MVVM.NetworkBinders;
 using System.Collections.Generic;
 using Unity.Netcode;
 using System.Linq;
+using SkyForge.MVVM.Editors;
 using UnityEngine;
 
 namespace SkyForge.MVVM
@@ -22,10 +23,10 @@ namespace SkyForge.MVVM
 
         public string ViewModelTypeFullName => m_viewModelTypeFullName;
         public string ViewModelPropertyName => m_viewModelPropertyName;
-        public bool IsPaerntView => m_isParentView;
+        public bool IsParentView => m_isParentView;
 
         protected INetworkViewModel m_targetViewModel;
-
+        
         public void Bind(IViewModel viewModel)
         {
             if (m_isParentView)
@@ -48,7 +49,13 @@ namespace SkyForge.MVVM
                 binder.Bind(m_targetViewModel);
             }
         }
-
+        
+        public override void OnNetworkSpawn()
+        {
+            Binded();
+            OnNetworkSpawned();
+        }
+        
         public void Destroy()
         {
             Destroy(gameObject);
@@ -58,6 +65,8 @@ namespace SkyForge.MVVM
 
         protected abstract void OnFixedUpdate();
 
+        protected virtual void OnNetworkSpawned() { }
+        
         private void Update()
         {
             OnUpdate();
@@ -68,6 +77,13 @@ namespace SkyForge.MVVM
             OnFixedUpdate();
         }
 
+        private void Binded()
+        {
+            foreach (var binder in m_childBinders)
+            {
+                binder.NetworkBinded();
+            }
+        }
 
 #if UNITY_EDITOR
         private void Start()

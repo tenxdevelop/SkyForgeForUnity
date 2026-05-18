@@ -28,7 +28,7 @@ namespace SkyForge.MVVM.Binders
             m_binding = BindInternal(viewModel);
             m_binding?.Binded();
         }
-
+        
         protected abstract IBinding BindInternal(IViewModel viewModel);
 
         private void Start()

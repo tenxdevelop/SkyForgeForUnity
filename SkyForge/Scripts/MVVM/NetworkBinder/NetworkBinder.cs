@@ -27,6 +27,10 @@ namespace SkyForge.MVVM.NetworkBinders
         public void Bind(INetworkViewModel viewModel)
         {
             m_binding = BindInternal(viewModel);
+        }
+
+        public void NetworkBinded()
+        {
             m_binding?.Binded();
         }
         

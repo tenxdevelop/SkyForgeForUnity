@@ -17,7 +17,10 @@ namespace SkyForge.Reactive
 
         public void Binded()
         {
-            
+            foreach (var item in m_reactiveOwner)
+            {
+                m_observer.NotifyCollectionAdded(null, item);
+            }
         }
 
         public void Dispose()

@@ -38,7 +38,6 @@ namespace SkyForge.Reactive
             if (!m_observers.Contains(observer))
             {
                 m_observers.Add(observer);
-                observer.NotifyObservableChanged(observer, m_value);
                 
                 return new ReactiveSubscription<T>(this, observer);
             }

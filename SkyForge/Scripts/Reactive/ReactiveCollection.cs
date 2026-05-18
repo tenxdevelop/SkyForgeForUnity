@@ -81,10 +81,6 @@ namespace SkyForge.Reactive
             if (!m_observers.Contains(observer))
             {
                 m_observers.Add(observer);
-                foreach (var item in m_items)
-                {
-                    observer.NotifyCollectionAdded(null, item);    
-                }
                 
                 return new ReactiveSubscriptionCollection<T>(this, observer);
             }
