@@ -41,7 +41,7 @@ namespace SkyForge
                 
                 foreach (var assembly in allAssemblies)
                 {
-                    if (assembly.FullName.Contains(m_assemblyName))
+                    if (assembly.FullName.Contains("Assembly-CSharp"))
                         m_assembly = assembly;
                 }
             }

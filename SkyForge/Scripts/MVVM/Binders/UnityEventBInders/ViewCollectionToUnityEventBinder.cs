@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_COLLECTION_BINDER +
+                      "View to unity event binder")]
     internal class ViewCollectionToUnityEventBinder : ObservableBinder<View>
     {
         [SerializeField] private UnityEvent<View> m_eventAdded;

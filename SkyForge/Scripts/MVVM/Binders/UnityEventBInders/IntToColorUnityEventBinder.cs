@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_BINDER +
+                      "Int to color unity event binder")]
     public class IntToColorUnityEventBinder : ObservableBinder<int>
     {
         [SerializeField] private List<IntToColorMapping> m_mappingColors = new();

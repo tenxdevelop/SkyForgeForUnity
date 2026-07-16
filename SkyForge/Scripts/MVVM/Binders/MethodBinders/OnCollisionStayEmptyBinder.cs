@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "On collision stay method binder")]
     public class OnCollisionStayEmptyBinder : CollisionOnTriggerEmptyBinder
     {
         private void OnCollisionStay(Collision collision)

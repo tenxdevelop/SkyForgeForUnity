@@ -67,14 +67,13 @@ namespace SkyForge.MVVM.Editors
         
         protected void DrawPropertyName()
         {
-            
             m_viewModelType = SkyForgeDefineAssembly.GetPlayerAssembly().GetType(ViewModelTypeFullName.stringValue);
 
             string[] options;
             
             if (m_viewModelType is null)
             {
-                //Debug.LogWarning($"Cannot find viewModelType: {ViewModelTypeFullName.stringValue} in assembly: {SkyForgeDefineAssembly.GetPlayerAssembly().FullName}");
+                Debug.LogWarning($"Cannot find viewModelType: {ViewModelTypeFullName.stringValue} in assembly: {SkyForgeDefineAssembly.GetPlayerAssembly().FullName}");
                 options = new string[] { MVVMConstant.NONE };
             }
             else

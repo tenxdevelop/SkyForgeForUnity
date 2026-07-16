@@ -7,13 +7,15 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_BINDER +
+                      "Bool to color unity event binder")]
     public class BoolToColorUnityEventBinder : ObservableBinder<bool>
     {
         [SerializeField] private Color m_trueColor = Color.white;
         [SerializeField] private Color m_falseColor = Color.black;
         [SerializeField] private UnityEvent<Color> m_event;
         [SerializeField] private UnityEvent<object, Color> m_eventWithAnalitics;
-
+        
         protected override void OnPropertyChanged(object sender, bool newValue)
         {
             if (newValue)

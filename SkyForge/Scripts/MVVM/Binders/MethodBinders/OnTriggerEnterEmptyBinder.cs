@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "On trigger enter method binder")]
     public class OnTriggerEnterEmptyBinder : TriggerOnTriggerEmptyBinder
     {      
         private void OnTriggerEnter(Collider other)

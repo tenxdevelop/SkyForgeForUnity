@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_BINDER +
+                      "Int to string unity event binder")]
     public class IntToStringUnityEventBinder : ObservableBinder<int>
     {
         [SerializeField] private string m_textBefore = string.Empty;

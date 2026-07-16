@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "On trigger stay method binder")]
     public class OnTriggerStayEmptyBinder : TriggerOnTriggerEmptyBinder
     {
         private void OnTriggerStay(Collider other)

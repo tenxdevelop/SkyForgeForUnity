@@ -8,6 +8,8 @@ using System;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "Empty method binder")]
     public class EmptyMethodBinder : MethodBinder
     {
         [SerializeField] protected Action<object> m_action;

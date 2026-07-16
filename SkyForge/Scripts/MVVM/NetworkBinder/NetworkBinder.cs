@@ -53,8 +53,10 @@ namespace SkyForge.MVVM.NetworkBinders
             OnStart();
         }
         
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
+            
 #if UNITY_EDITOR
             var parentView = GetComponentInParent<BaseNetworkView>();
             if (parentView)

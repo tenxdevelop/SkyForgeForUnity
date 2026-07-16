@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_BINDER +
+                      "Int to bool unity event binder")]
     public class IntToBoolUnityEventBinder : ObservableBinder<int>
     {
         [SerializeField] private CompareOperation m_compareOperation;

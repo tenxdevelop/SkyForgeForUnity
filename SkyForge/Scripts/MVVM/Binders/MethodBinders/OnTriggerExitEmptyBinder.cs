@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "On trigger exit method binder")]
     public class OnTriggerExitEmptyBinder : TriggerOnTriggerEmptyBinder
     {
         private void OnTriggerExit(Collider other)

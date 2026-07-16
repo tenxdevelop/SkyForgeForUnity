@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_REACTIVE_BINDER +
+                      "Int to sprite unity event binder")]
     public class IntToSpriteUnityEventBinder : ObservableBinder<int>
     {
         [SerializeField] private List<IntToSpriteMapping> m_mappingSprites = new();
