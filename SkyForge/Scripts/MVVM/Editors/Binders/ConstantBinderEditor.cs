@@ -2,6 +2,8 @@
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 using SkyForge.MVVM.Binders;
 using System.Linq;
@@ -10,7 +12,7 @@ using UnityEditor;
 namespace SkyForge.MVVM.Editors
 {
     [CustomEditor(typeof(ConstantBinder), true)]
-    public class ConstantBinderEditor : BinderEditor
+    public class ConstantBinderEditor : SkyForge.MVVM.Editors.BinderEditor
     {
         private ConstantBinder m_constantBinder;
         protected override void OnStart()
@@ -37,3 +39,5 @@ namespace SkyForge.MVVM.Editors
         }
     }
 }
+
+#endif

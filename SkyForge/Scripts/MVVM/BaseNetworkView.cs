@@ -6,7 +6,6 @@ using SkyForge.MVVM.NetworkBinders;
 using System.Collections.Generic;
 using Unity.Netcode;
 using System.Linq;
-using SkyForge.MVVM.Editors;
 using UnityEngine;
 
 namespace SkyForge.MVVM
