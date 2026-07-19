@@ -1,16 +1,16 @@
-﻿/**************************************************************************\
+/**************************************************************************\
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
 using UnityEngine;
 
-namespace SkyForge.MVVM.Binders
+namespace SkyForge.MVVM.NetworkBinders
 {
-    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
-                      "On collision enter method binder")]
-    public class OnCollisionEnterEmptyBinder : CollisionOnTriggerEmptyBinder
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_NETWORK_METHOD_BINDER +
+                      "On trigger network exit empty binder")]
+    public class OnTriggerNetworkExitEmptyBinder : OnTriggerNetworkEmptyBinder
     {
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerExit(Collider other)
         {
             if (m_triggerViewType is null)
             {
@@ -23,7 +23,7 @@ namespace SkyForge.MVVM.Binders
                 return;
             }
             
-            var view = collision.gameObject.GetComponent(m_triggerViewType);
+            var view = other.GetComponent(m_triggerViewType);
             if (view)
             {
                 m_action?.Invoke(view);

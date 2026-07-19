@@ -1,14 +1,14 @@
-﻿/**************************************************************************\
+/**************************************************************************\
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
 using UnityEngine;
 
-namespace SkyForge.MVVM.Binders
+namespace SkyForge.MVVM.NetworkBinders
 {
-    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
-                      "On collision enter method binder")]
-    public class OnCollisionEnterEmptyBinder : CollisionOnTriggerEmptyBinder
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_NETWORK_METHOD_BINDER +
+                      "On collision network enter empty binder")]
+    public class OnCollisionNetworkEnterEmptyBinder : OnTriggerNetworkEmptyBinder
     {
         private void OnCollisionEnter(Collision collision)
         {

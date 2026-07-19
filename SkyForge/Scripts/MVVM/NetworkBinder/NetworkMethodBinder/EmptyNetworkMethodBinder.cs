@@ -1,4 +1,4 @@
-﻿/**************************************************************************\
+/**************************************************************************\
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
@@ -6,22 +6,19 @@ using SkyForge.Reactive;
 using UnityEngine;
 using System;
 
-namespace SkyForge.MVVM.Binders
+namespace SkyForge.MVVM.NetworkBinders
 {
-    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
-                      "Empty method binder")]
-    public class EmptyMethodBinder : MethodBinder
+    public class EmptyNetworkMethodBinder : NetworkMethodBinder
     {
         [SerializeField] protected Action<object> m_action;
-        
-        protected override IBinding BindInternal(IViewModel viewModel)
+        protected override IBinding BindInternal(INetworkViewModel viewModel)
         {
             m_action = Delegate.CreateDelegate(typeof(Action<object>), viewModel, MethodName) as Action<object>;
             OnBind();
-
+            
             return null;
         }
-
+        
         public void Perform()
         {
             m_action?.Invoke(null);
@@ -31,7 +28,7 @@ namespace SkyForge.MVVM.Binders
         {
             m_action?.Invoke(sender);
         }
-
+        
         protected virtual void OnBind() { }
     }
 }

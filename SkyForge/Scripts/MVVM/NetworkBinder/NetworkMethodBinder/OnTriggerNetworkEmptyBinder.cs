@@ -1,14 +1,13 @@
-﻿/**************************************************************************\
+/**************************************************************************\
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Extension;
 using UnityEngine;
 using System;
 
-namespace SkyForge.MVVM.Binders
+namespace SkyForge.MVVM.NetworkBinders
 {
-    public abstract class OnTriggerEmptyBinder : EmptyMethodBinder
+    public abstract class OnTriggerNetworkEmptyBinder : EmptyNetworkMethodBinder
     {
         [SerializeField, HideInInspector] private string m_triggerViewTypeFullName;
         protected Type m_triggerViewType;

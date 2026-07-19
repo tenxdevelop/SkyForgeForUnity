@@ -21,7 +21,8 @@ namespace SkyForge.MVVM
         public const string PROPERTY_NAME = "Property Name: ";
         public const string TRIGGER_VIEW = "Trigger View: ";
         public const string COMPONENT_MENU_PATH_NETWORK_CONSTANT_BINDER = "SkyForge/Network binders/Constant binder/";
-        public const string COMPONENT_MENU_PATH_NETWORK_REACTIVE_BINDER = "SKyForge/Network binders/Reactive binder/";
+        public const string COMPONENT_MENU_PATH_NETWORK_REACTIVE_BINDER = "SkyForge/Network binders/Reactive binder/";
+        public const string COMPONENT_MENU_PATH_NETWORK_METHOD_BINDER = "SkyForge/Network binders/Method binder/";
         public const string COMPONENT_MENU_PATH_CONSTANT_BINDER = "SkyForge/Binders/Constant binder/";
         public const string COMPONENT_MENU_PATH_REACTIVE_BINDER = "SkyForge/Binders/Reactive binder/";
         public const string COMPONENT_MENU_PATH_METHOD_BINDER = "SkyForge/Binders/Method binder/";

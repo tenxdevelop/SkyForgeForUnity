@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace SkyForge.MVVM.Binders
 {
-    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_CONSTANT_BINDER + 
-                      "Vector3Int constant binder")]
-    public class Vector3IntConstantBinder : ConstantBinder<Vector3IntMethodBinder>
+    [AddComponentMenu(MVVMConstant.COMPONENT_MENU_PATH_METHOD_BINDER + 
+                      "Vector3 method binder")]
+    public class Vector3MethodBinder : GenericMethodBinder<Vector3>
     {
         
     }

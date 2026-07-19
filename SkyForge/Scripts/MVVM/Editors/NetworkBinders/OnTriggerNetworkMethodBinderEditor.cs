@@ -1,4 +1,4 @@
-﻿/**************************************************************************\
+/**************************************************************************\
    Copyright SkyForge Corporation. All Rights Reserved.
 \**************************************************************************/
 
@@ -13,10 +13,11 @@ using System;
 
 namespace SkyForge.MVVM.Editors
 {
-    public abstract class OnTriggerMethodBinderEditor : MethodBinderEditor
+    public abstract class OnTriggerNetworkMethodBinderEditor : NetworkMethodBinderEditor
     {
         private SerializedProperty m_triggerViewTypeFullName;
         private TypeCache.TypeCollection m_cachedViewTypes;
+        private TypeCache.TypeCollection m_cachedNetworkViewTypes;
         
         protected Dictionary<string, string> m_viewNames;
         
@@ -26,18 +27,20 @@ namespace SkyForge.MVVM.Editors
             m_viewNames = new Dictionary<string, string>();
             m_triggerViewTypeFullName = serializedObject.FindProperty(nameof(m_triggerViewTypeFullName));
         }
+        
         protected override void UpInspectorGUI()
         {
             m_cachedViewTypes = TypeCache.GetTypesDerivedFrom<View>();
-
+            m_cachedNetworkViewTypes = TypeCache.GetTypesDerivedFrom<BaseNetworkView>();
+            
             DefineViewNames();
             DrawSearchView();
         }
-
+        
         protected void DrawSearchView()
         {
             var options = m_viewNames.Keys.ToArray();
-
+            
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(MVVMConstant.TRIGGER_VIEW);
 
@@ -55,6 +58,9 @@ namespace SkyForge.MVVM.Editors
         {
             var allViewModelTypes = m_cachedViewTypes.Where(type => type.IsClass && !type.IsAbstract)
                                                      .OrderBy(type => type.Name);
+
+            var allNetworkViewModelTypes = m_cachedNetworkViewTypes.Where(type => type.IsClass && !type.IsAbstract).OrderBy(type => type.Name);
+            
             m_viewNames.Clear();
             m_viewNames[MVVMConstant.NONE] = null;
             m_viewNames[MVVMConstant.ANY] = MVVMConstant.ANY_VIEW_TYPE;
@@ -62,6 +68,11 @@ namespace SkyForge.MVVM.Editors
             foreach (var viewModelType in allViewModelTypes)
             {
                 m_viewNames[viewModelType.Name] = viewModelType.FullName;
+            }
+
+            foreach (var networkViewModelType in allNetworkViewModelTypes)
+            {
+                m_viewNames[networkViewModelType.Name] = networkViewModelType.FullName;
             }
         }
 

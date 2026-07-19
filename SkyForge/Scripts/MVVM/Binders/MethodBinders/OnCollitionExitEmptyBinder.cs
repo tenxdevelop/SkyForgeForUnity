@@ -12,18 +12,18 @@ namespace SkyForge.MVVM.Binders
     {
         private void OnCollisionExit(Collision collision)
         {
-            if (m_trigerViewType is null)
+            if (m_triggerViewType is null)
             {
                 return;
             }
 
-            if (m_trigerViewType.FullName.Equals(MVVMConstant.ANY_VIEW_TYPE))
+            if (m_triggerViewType.FullName.Equals(MVVMConstant.ANY_VIEW_TYPE))
             {
                 m_action?.Invoke(null);
                 return;
             }
             
-            var view = collision.gameObject.GetComponent(m_trigerViewType);
+            var view = collision.gameObject.GetComponent(m_triggerViewType);
             if (view)
             {
                 m_action?.Invoke(view);
